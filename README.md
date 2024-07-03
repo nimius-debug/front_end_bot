@@ -4,6 +4,7 @@ This Telegram bot facilitates swapping Bitcoin for Solana. Users can register wi
 
 ## Project Structure
 
+```
 project_root/
 │
 ├── bot/
@@ -27,6 +28,7 @@ project_root/
 ├── main.py
 ├── requirements.txt
 └── README.md
+```
 
 ### Bot Directory
 
