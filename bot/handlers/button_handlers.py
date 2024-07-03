@@ -25,8 +25,8 @@ async def export_key(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
 
     api_response = await APIClient.export_key(user.id, existing_user['api_key'])
     print(api_response)
-    if api_response:
-        await update.callback_query.message.reply_text(f"Your Solana Private Key: {api_response['private_key']}")
+    if api_response!=None:
+        await update.callback_query.message.reply_text(f"Your Solana Private Key: {api_response['solana_private_key']}")
     else:
         await update.callback_query.message.reply_text("Failed to export key. Please try again later.")
 
