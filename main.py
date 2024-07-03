@@ -8,6 +8,7 @@ from bot.handlers.menu import show_menu
 from bot.handlers.button_handlers import button
 
 def main() -> None:
+    print("Bot started")
     """Start the bot."""
     application = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
 

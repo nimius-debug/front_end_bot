@@ -1,6 +1,6 @@
 from telegram import Update
 from telegram.ext import ContextTypes
-from bot.utils.api_client import MockAPIClient as APIClient
+from bot.utils.api_client import APIClient
 from database.mongo_client import get_user, update_user
 from bot.handlers.btc_address import handle_new_btc_address
 
@@ -24,6 +24,7 @@ async def export_key(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
         return
 
     api_response = await APIClient.export_key(user.id, existing_user['api_key'])
+    print(api_response)
     if api_response:
         await update.callback_query.message.reply_text(f"Your Solana Private Key: {api_response['private_key']}")
     else:
