@@ -25,6 +25,7 @@ def main() -> None:
 
     # Start the Bot
     application.run_polling()
+    application.idle()
 
 if __name__ == '__main__':
     main()

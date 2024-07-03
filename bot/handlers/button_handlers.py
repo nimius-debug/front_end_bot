@@ -2,6 +2,7 @@ from telegram import Update
 from telegram.ext import ContextTypes
 from bot.utils.api_client import MockAPIClient as APIClient
 from database.mongo_client import get_user, update_user
+from bot.handlers.btc_address import handle_new_btc_address
 
 async def buy_sol(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     user = update.callback_query.from_user
@@ -35,7 +36,14 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await query.answer()
 
     if query.data == 'buy_sol':
-        await buy_sol(update, context)
+        await buy_sol(query, context)
     elif query.data == 'export_key':
-        await export_key(update, context)
-    # Add other button handlers here
+        await export_key(query, context)
+    elif query.data == 'handle_new_btc_address':
+        await handle_new_btc_address(query, context)
+    elif query.data == 'tx_settings':
+        await query.edit_message_text(
+            text="TX Settings functionality is under development.")
+    elif query.data == 'autobuy_settings':
+        await query.edit_message_text(
+            text="Autobuy Settings functionality is under development.")
